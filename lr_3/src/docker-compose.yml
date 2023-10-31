@@ -1,0 +1,66 @@
+version: '3.7'
+
+networks:
+  net_1:
+    driver: bridge
+
+volumes:
+    data-volume:
+        name: my-app-data
+
+services:
+    keycloak:
+        image: quay.io/keycloak/keycloak:17.0.0
+        restart: always
+        ports:
+            - "8180:8080"
+        expose:
+            - "8080"
+        networks:
+            - net_1
+        volumes:
+            - data-volume:/var/lib/keycloak
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin
+        command: start-dev
+    database:
+        image: postgres
+        restart: always
+        ports:
+            - "5432:5432"
+        expose:
+            - "5432"
+        networks:
+            - net_1
+        environment:
+            POSTGRES_USER: coursework
+            POSTGRES_PASSWORD: coursework
+            POSTGRES_DB: coursework
+    backend:
+        image: quarkus/coursework-jvm
+        restart: always
+        ports:
+            - "172.17.0.1:8080:8080"
+        expose:
+            - "8080"
+        networks:
+            - net_1
+        depends_on:
+            keycloak:
+                condition: service_started
+            database:
+                condition: service_started
+    frontend:
+        image: my-work
+        restart: always
+        ports:
+            - "3000:80"
+        expose:
+            - "80"
+            - "8080"
+        networks:
+            - net_1
+        depends_on:
+            backend:
+                condition: service_started
