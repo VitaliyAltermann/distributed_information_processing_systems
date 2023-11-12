@@ -1,8 +1,12 @@
 version: '3.7'
 
 networks:
-  net_1:
-    driver: bridge
+    net_1:
+        driver: bridge
+        # ipam:
+        #     config:
+        #         - subnet: 172.32.0.0/12
+        #           gateway: 172.32.0.1
 
 volumes:
     data-volume:
@@ -13,26 +17,32 @@ services:
         image: quay.io/keycloak/keycloak:17.0.0
         restart: always
         ports:
-            - "8180:8080"
-        expose:
-            - "8080"
-        networks:
-            - net_1
-        volumes:
-            - data-volume:/var/lib/keycloak
+            - "8080:8080"
+        # expose:
+        #     - "8080"
+        network_mode: "host"
+        # networks:
+        #     # - net_1
+        #     net_1:
+        #         ipv4_address: 172.32.0.3
+        # volumes:
+        #     - data-volume:/var/lib/keycloak
         environment:
             KEYCLOAK_ADMIN: admin
             KEYCLOAK_ADMIN_PASSWORD: admin
         command: start-dev
     database:
-        image: postgres
+        image: postgres:12
         restart: always
         ports:
             - "5432:5432"
-        expose:
-            - "5432"
-        networks:
-            - net_1
+        # expose:
+        #     - "5432"
+        network_mode: "host"
+        # networks:
+        #     # - net_1
+        #     net_1:
+        #         ipv4_address: 172.32.0.2
         environment:
             POSTGRES_USER: coursework
             POSTGRES_PASSWORD: coursework
@@ -41,11 +51,14 @@ services:
         image: quarkus/coursework-jvm
         restart: always
         ports:
-            - "172.17.0.1:8080:8080"
-        expose:
-            - "8080"
-        networks:
-            - net_1
+            - "8081:8081"
+        # expose:
+        #     - "8080"
+        network_mode: "host"
+        # networks:
+        #     # - net_1
+        #     net_1:
+        #         ipv4_address: 172.32.0.4
         depends_on:
             keycloak:
                 condition: service_started
@@ -55,12 +68,17 @@ services:
         image: my-work
         restart: always
         ports:
-            - "3000:80"
-        expose:
-            - "80"
-            - "8080"
-        networks:
-            - net_1
+            - "3000:3000"
+        # expose:
+        #     - "80"
+        #     - "8080"
+        #     - "3000"
+        network_mode: "host"
+        # networks:
+        #     # - net_1
+        #     net_1:
+        #         ipv4_address: 172.32.0.5
+        command: npm run serve
         depends_on:
             backend:
                 condition: service_started
