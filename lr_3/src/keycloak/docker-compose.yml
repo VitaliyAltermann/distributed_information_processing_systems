@@ -1,0 +1,18 @@
+version: '3.7'
+
+networks:
+  network:
+    name: net_1
+    external: true
+
+services:
+    keycloak:
+        image: quay.io/keycloak/keycloak:17.0.0
+        ports:
+            - "8080:8080"
+        networks:
+            - network
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin
+        command: start-dev

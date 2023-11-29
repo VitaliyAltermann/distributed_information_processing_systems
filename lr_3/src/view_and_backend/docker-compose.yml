@@ -1,0 +1,29 @@
+version: '3.7'
+
+networks:
+  network:
+    name: net_1
+    external: true
+
+services:
+    backend:
+        image: quarkus/coursework-jvm
+        ports:
+            - "8081:8081"
+        networks:
+            - network
+    frontend:
+        image: my-work
+        ports:
+            - '80:80'
+            #- '443:443'
+            - "3000:3000"
+        volumes:
+            - './nginx/conf:/etc/nginx/conf.d'
+            - './nginx/certs:/etc/nginx/certs'
+            - './nginx/vhost:/etc/nginx/vhost.d'
+        networks:
+            - network
+        depends_on:
+            backend:
+                condition: service_started

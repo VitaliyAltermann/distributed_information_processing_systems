@@ -1,0 +1,333 @@
+    ~  sudo docker exec -it acb01bb5632f sh                                                                                                                                                                                1 ✘  3s 
+# apt --help
+apt 2.2.4 (amd64)
+Usage: apt [options] command
+
+apt is a commandline package manager and provides commands for
+searching and managing as well as querying information about packages.
+It provides the same functionality as the specialized APT tools,
+like apt-get and apt-cache, but enables options more suitable for
+interactive use by default.
+
+Most used commands:
+  list - list packages based on package names
+  search - search in package descriptions
+  show - show package details
+  install - install packages
+  reinstall - reinstall packages
+  remove - remove packages
+  autoremove - Remove automatically all unused packages
+  update - update list of available packages
+  upgrade - upgrade the system by installing/upgrading packages
+  full-upgrade - upgrade the system by removing/installing/upgrading packages
+  edit-sources - edit the source information file
+  satisfy - satisfy dependency strings
+
+See apt(8) for more information about the available commands.
+Configuration options and syntax is detailed in apt.conf(5).
+Information about how to configure sources can be found in sources.list(5).
+Package and version choices can be expressed via apt_preferences(5).
+Security details are available in apt-secure(8).
+                                        This APT has Super Cow Powers.
+# sudo apt install nodejs npm
+sh: 2: sudo: not found
+# apt install nodejs npm
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package nodejs
+E: Unable to locate package npm
+# npm run serve
+sh: 4: npm: not found
+# apt-get install nodejs npm
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package nodejs
+E: Unable to locate package npm
+# apt-get update
+Get:1 http://deb.debian.org/debian bullseye InRelease [116 kB]
+Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [48.4 kB]
+Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8062 kB]
+Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [259 kB]
+Get:6 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [17.7 kB]
+Fetched 8547 kB in 3s (2642 kB/s)
+Reading package lists... Done
+# install curl
+install: missing destination file operand after 'curl'
+Try 'install --help' for more information.
+# apt-get install curl
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (7.74.0-1.3+deb11u10).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+# curl -sL https://deb.nodesource.com/setup_4.x | bash
+
+================================================================================
+================================================================================
+
+                              DEPRECATION WARNING
+
+  Node.js 4.x LTS Argon is no longer actively supported!
+
+  You will not receive security or critical stability updates for this version.
+
+  You should migrate to a supported version of Node.js as soon as possible.
+  Use the installation script that corresponds to the version of Node.js you
+  wish to install. e.g.
+
+   * https://deb.nodesource.com/setup_16.x — Node.js 16 "Gallium"
+   * https://deb.nodesource.com/setup_18.x — Node.js 18 LTS "Hydrogen" (recommended)
+   * https://deb.nodesource.com/setup_19.x — Node.js 19 "Nineteen"
+   * https://deb.nodesource.com/setup_20.x — Node.js 20 "Iron" (current)
+
+  Please see https://github.com/nodejs/Release for details about which
+  version may be appropriate for you.
+
+  The NodeSource Node.js distributions repository contains
+  information both about supported versions of Node.js and supported Linux
+  distributions. To learn more about usage, see the repository:
+    https://github.com/nodesource/distributions
+
+================================================================================
+================================================================================
+
+Continuing in 20 seconds ...
+
+
+================================================================================
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+================================================================================
+
+                           SCRIPT DEPRECATION WARNING
+
+
+  This script, located at https://deb.nodesource.com/setup_X, used to
+  install Node.js is deprecated now and will eventually be made inactive.
+
+  Please visit the NodeSource distributions Github and follow the
+  instructions to migrate your repo.
+  https://github.com/nodesource/distributions
+
+  The NodeSource Node.js Linux distributions GitHub repository contains
+  information about which versions of Node.js and which Linux distributions
+  are supported and how to install it.
+  https://github.com/nodesource/distributions
+
+
+                          SCRIPT DEPRECATION WARNING
+
+================================================================================
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+================================================================================
+
+TO AVOID THIS WAIT MIGRATE THE SCRIPT
+Continuing in 60 seconds (press Ctrl-C to abort) ...
+
+^C
+# curl -sL https://deb.nodesource.com/setup_19.x | bash
+
+================================================================================
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+================================================================================
+
+                           SCRIPT DEPRECATION WARNING
+
+
+  This script, located at https://deb.nodesource.com/setup_X, used to
+  install Node.js is deprecated now and will eventually be made inactive.
+
+  Please visit the NodeSource distributions Github and follow the
+  instructions to migrate your repo.
+  https://github.com/nodesource/distributions
+
+  The NodeSource Node.js Linux distributions GitHub repository contains
+  information about which versions of Node.js and which Linux distributions
+  are supported and how to install it.
+  https://github.com/nodesource/distributions
+
+
+                          SCRIPT DEPRECATION WARNING
+
+================================================================================
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+================================================================================
+
+TO AVOID THIS WAIT MIGRATE THE SCRIPT
+Continuing in 60 seconds (press Ctrl-C to abort) ...
+
+
+## Installing the NodeSource Node.js 19.x repo...
+
+
+## Populating apt-get cache...
+
++ apt-get update
+Hit:1 http://deb.debian.org/debian bullseye InRelease
+Hit:2 http://deb.debian.org/debian-security bullseye-security InRelease
+Hit:3 http://deb.debian.org/debian bullseye-updates InRelease
+Reading package lists... Done
+
+## Installing packages required for setup: lsb-release gnupg...
+
++ apt-get install -y lsb-release gnupg > /dev/null 2>&1
+
+## Confirming "bullseye" is supported...
+
++ curl -sLf -o /dev/null 'https://deb.nodesource.com/node_19.x/dists/bullseye/Release'
+
+## Adding the NodeSource signing key to your keyring...
+
++ curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee /usr/share/keyrings/nodesource.gpg >/dev/null
+
+## Creating apt sources list file for the NodeSource Node.js 19.x repo...
+
++ echo 'deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_19.x bullseye main' > /etc/apt/sources.list.d/nodesource.list
++ echo 'deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_19.x bullseye main' >> /etc/apt/sources.list.d/nodesource.list
+
+## Running `apt-get update` for you...
+
++ apt-get update
+Hit:1 http://deb.debian.org/debian bullseye InRelease
+Hit:2 http://deb.debian.org/debian-security bullseye-security InRelease
+Hit:3 http://deb.debian.org/debian bullseye-updates InRelease
+Get:4 https://deb.nodesource.com/node_19.x bullseye InRelease [4586 B]
+Get:5 https://deb.nodesource.com/node_19.x bullseye/main amd64 Packages [773 B]
+Fetched 5359 B in 1s (4819 B/s)
+Reading package lists... Done
+
+## Run `sudo apt-get install -y nodejs` to install Node.js 19.x and npm
+## You may also need development tools to build native addons:
+     sudo apt-get install gcc g++ make
+## To install the Yarn package manager, run:
+     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+     sudo apt-get update && sudo apt-get install yarn
+
+
+# apt-get install nodejs
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  nodejs
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 29.3 MB of archives.
+After this operation, 189 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_19.x bullseye/main amd64 nodejs amd64 19.9.0-deb-1nodesource1 [29.3 MB]
+Fetched 29.3 MB in 5s (5693 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nodejs.
+(Reading database ... 8827 files and directories currently installed.)
+Preparing to unpack .../nodejs_19.9.0-deb-1nodesource1_amd64.deb ...
+Unpacking nodejs (19.9.0-deb-1nodesource1) ...
+Setting up nodejs (19.9.0-deb-1nodesource1) ...
+# node -v
+v19.9.0
+# npm -v
+9.6.3
+# npm run serve
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path //package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '//package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-11-26T15_15_03_854Z-debug-0.log
+# cd /app/dist
+sh: 15: cd: can't cd to /apist
+# cd /
+# cd /app/
+sh: 17: cd: can't cd to /app/
+# cd /usr/share/nginx/html
+# ls ./
+50x.html  css  favicon.ico  index.html  js
+# npm run serve
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /usr/share/nginx/html/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/usr/share/nginx/html/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-11-26T15_17_15_069Z-debug-0.log
+# cd ../
+# ls ./
+html
+# cd ./
+# ls ./
+html
+# cd ../
+# ls ./
+X11           base-files       binfmts          common-licenses  dict         doc-base    fonts  gnupg  keyrings  locale      menu   pam          pixmaps   python3         tabset    xml
+adduser       base-passwd      bug              debconf          distro-info  dpkg        gcc    info   libc-bin  man         misc   pam-configs  polkit-1  readline        terminfo  zoneinfo
+applications  bash-completion  ca-certificates  debianutils      doc          fontconfig  gdb    java   lintian   maven-repo  nginx  perl5        pyshared  sensible-utils  ucf       zsh
+# cd /
+# ls ./
+bin  boot  dev  docker-entrypoint.d  docker-entrypoint.sh  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+# nginx restart
+nginx: invalid option: "restart"
+# nginx --help
+nginx: invalid option: "-"
+# nginx
+2023/11/26 15:24:04 [emerg] 1320#1320: "server" directive is not allowed here in /etc/nginx/nginx.conf:1
+nginx: [emerg] "server" directive is not allowed here in /etc/nginx/nginx.conf:1
+# /etc/nginx/nginx.conf
+sh: 32: /etc/nginx/nginx.conf: Permission denied
+# nginx
+2023/11/26 15:28:24 [emerg] 1322#1322: no "events" section in configuration
+nginx: [emerg] no "events" section in configuration
+# nginx
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to [::]:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to [::]:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to [::]:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to [::]:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: bind() to [::]:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2023/11/26 15:29:49 [emerg] 1323#1323: still could not bind()
+nginx: [emerg] still could not bind()
+# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+# systemctl restart nginx
+sh: 36: systemctl: not found
+# restart nginx
+sh: 37: restart: not found
+# nginx -s reload
+2023/11/26 15:32:22 [notice] 1325#1325: signal process started
+# npm run serve
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path //package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '//package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-11-26T15_37_26_340Z-debug-0.log
+# cd /usr/share/nginx/html
+# ls ./
+50x.html  css  favicon.ico  index.html  js
+# cat index.html
+<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>my-work</title><script defer="defer" src="/js/chunk-vendors.63694ec9.js"></script><script defer="defer" src="/js/app.a061472f.js"></script><link href="/css/chunk-vendors.269fb860.css" rel="stylesheet"><link href="/css/app.f338f175.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but my-work doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html># it
+sh: 43: it: not found
+# %
