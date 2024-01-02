@@ -12,14 +12,12 @@ services:
             - "8081:8081"
         networks:
             - network
-
     backend_2:
         image: quarkus/coursework-jvm
         ports:
             - "8082:8081"
         networks:
             - network
-            
     frontend:
         image: my-work
         ports:
