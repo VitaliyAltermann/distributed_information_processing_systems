@@ -1,7 +1,6 @@
 input {
-  udp {
-    port => 12202
-    type => syslog
+  gelf {
+    port => 12201
   }
 }
 output {

@@ -2,8 +2,8 @@ version: '3.7'
 
 networks:
   network:
+    driver: bridge
     name: net_1
-    external: true
 
 services:
     keycloak:
