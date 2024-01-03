@@ -15,4 +15,6 @@ services:
         environment:
             KEYCLOAK_ADMIN: admin
             KEYCLOAK_ADMIN_PASSWORD: admin
+        volumes:
+            - './data:/opt/jboss/keycloak/standalone/data/'
         command: start-dev

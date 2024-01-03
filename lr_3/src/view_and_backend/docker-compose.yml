@@ -18,6 +18,9 @@ services:
             - "8082:8081"
         networks:
             - network
+        depends_on:
+            backend:
+                condition: service_started
     frontend:
         image: my-work
         ports:
@@ -31,5 +34,5 @@ services:
         networks:
             - network
         depends_on:
-            backend:
+            backend_2:
                 condition: service_started
