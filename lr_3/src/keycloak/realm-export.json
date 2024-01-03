@@ -932,7 +932,7 @@
     {
       "id": "247ade71-e81c-4667-be1e-ba7f3d8e6088",
       "clientId": "my-work",
-      "rootUrl": "http://172.18.0.6:80",
+      "rootUrl": "http://172.18.0.9:80",
       "adminUrl": "*",
       "surrogateAuthRequired": false,
       "enabled": true,

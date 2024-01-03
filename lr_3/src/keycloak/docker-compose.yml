@@ -16,5 +16,5 @@ services:
             KEYCLOAK_ADMIN: admin
             KEYCLOAK_ADMIN_PASSWORD: admin
         volumes:
-            - './data:/opt/jboss/keycloak/standalone/data/'
+            - './data:/opt/keycloak/data/'
         command: start-dev
