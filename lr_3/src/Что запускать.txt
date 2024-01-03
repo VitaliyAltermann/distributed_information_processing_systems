@@ -1,0 +1,14 @@
+1) Использовать адресацию типа "192.168.0.2"
+2) Запускать на разных машинах:
+    1 - keycloak
+    2 - БД
+    3 - ELK (все 3 на одной)
+    4 - Prometheus и Grafana
+    5 - Consul
+    6 - backend_1
+    7 - backend_2
+    8 - view
+3) Сохранить в арфхив образ контейнера:
+    sudo docker save -o <path for generated tar file> <image name>
+4) Загрузить образ контейнера из архива:
+    sudo docker load -i <path to image tar file>
