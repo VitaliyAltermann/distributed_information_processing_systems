@@ -1,0 +1,72 @@
+version: '3.7'
+
+name: my_project
+
+services:
+    elasticsearch:
+        image: elasticsearch:8.11.3
+        ports:
+            - target: 9200
+              published: 9200
+              protocol: tcp
+              mode: host
+        environment:
+            ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+            discovery.type: "single-node"
+            xpack.security.enabled: false
+            cluster.routing.allocation.disk.threshold_enabled: false
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./elasticsearch:/usr/share/elasticsearch/data
+        deploy:
+            resources:
+                limits:
+                    memory: 1GB
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    kibana:
+        image: kibana:8.11.3
+        ports:
+            - target: 5601
+              published: 5601
+              protocol: tcp
+              mode: host
+        volumes:
+            - ./kibana:/usr/share/kibana/data
+        environment:
+            SERVER_NAME: localhost:5601
+            XPACK_SECURITY_ENABLED: "false"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        depends_on:
+            - elasticsearch
+
+    logstash:
+        image: logstash:8.11.3
+        volumes:
+            - source: './pipelines'
+              target: /usr/share/logstash/pipeline
+              type: bind
+        ports:
+            - target: 12201
+              published: 12201
+              protocol: udp
+              mode: host
+            - target: 5000
+              published: 5000
+              protocol: tcp
+              mode: host
+            - target: 9600
+              published: 9600
+              protocol: tcp
+              mode: host
+        environment:
+            XPACK_MONITORING_ENABLED: "false"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        depends_on:
+            - kibana

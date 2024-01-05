@@ -1,0 +1,16 @@
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    consul:
+        image: consul:1.7
+        hostname: consul
+        ports:
+            - "8500:8500"
+            - "8501:8501"
+        networks:
+            - network

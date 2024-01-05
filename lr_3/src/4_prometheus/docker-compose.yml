@@ -1,0 +1,30 @@
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    prometheus:
+        image: prom/prometheus
+        ports:
+            - "9090:9090"
+        networks:
+            - network
+        volumes:
+            - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
+        command:
+            - --config.file=/etc/prometheus/prometheus.yml
+    grafana:
+        image: grafana/grafana
+        ports:
+            - "3001:3000"
+        networks:
+            - network
+        volumes:
+            - ./grafana:/var/lib/grafana
+            - ./grafana/provisioning/:/etc/grafana/provisioning/
+        depends_on:
+            prometheus:
+                condition: service_started

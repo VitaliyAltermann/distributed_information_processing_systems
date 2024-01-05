@@ -1,0 +1,14 @@
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    backend_1:
+        image: quarkus/coursework-jvm
+        ports:
+            - "8081:8081"
+        networks:
+            - network

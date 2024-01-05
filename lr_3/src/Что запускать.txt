@@ -1,14 +1,29 @@
-1) Использовать адресацию типа "192.168.0.2"
-2) Запускать на разных машинах:
-    1 - keycloak
-    2 - БД
-    3 - ELK (все 3 на одной)
-    4 - Prometheus и Grafana
-    5 - Consul
-    6 - backend_1
-    7 - backend_2
-    8 - view
-3) Сохранить в арфхив образ контейнера:
-    sudo docker save -o <path for generated tar file> <image name>
-4) Загрузить образ контейнера из архива:
-    sudo docker load -i <path to image tar file>
+1) Запускать на разных машинах:
+    1 - "192.168.122.2" - keycloak
+    2 - "192.168.122.3" - БД
+    3 - "192.168.122.4" - ELK (все 3 на одной)
+    4 - "192.168.122.5" - Prometheus и Grafana
+    5 - "192.168.122.6" - Consul
+    6 - "192.168.122.7" - backend_1
+    7 - "192.168.122.8" - backend_2
+    8 - "192.168.122.9" - view
+2) Работа с образами бэка и вронта:
+    Сохранить в tar-арфхив: sudo docker save -o <path for generated tar file> <image name>
+    Загрузить из tar-арфхива: sudo docker load -i <path to image tar file>
+3) При проблемах работы с докером:
+    sudo systemctl unmask docker && sudo systemctl start docker && sudo systemctl enable docker.service && sudo systemctl status docker
+4) Для запуска сервера без UI:
+    Отключение UI:
+        sudo systemctl enable multi-user.target && sudo systemctl set-default multi-user.target && reboot
+    Настройка локали:
+        1) Раскомментировать ru_RU.UTF-8 в файле /etc/locale.gen:
+            sudo nano /etc/locale.gen
+            ctrl+w -> ru_RU -> Enter
+            ctrl+o
+            ctrl+x
+        2) Сгенерить и установаить локали:
+            sudo locale-gen
+            localectl set-locale ru_RU.UTF-8
+        3) Заменить содержимое /etc/vconsole.conf на:
+            FONT=cyr-sun16
+            KEYMAP=ru

@@ -1,0 +1,18 @@
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    database:
+        image: postgres:12
+        ports:
+            - "5432:5432"
+        networks:
+            - network
+        environment:
+            POSTGRES_USER: coursework
+            POSTGRES_PASSWORD: coursework
+            POSTGRES_DB: coursework
