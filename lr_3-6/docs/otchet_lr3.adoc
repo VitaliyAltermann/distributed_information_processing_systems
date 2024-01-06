@@ -1,0 +1,125 @@
+= Отчет по лабораторной работе No.3
+:listing-caption: Листинг
+:source-highlighter: coderay
+
+Студенты: Перхуров В.А., Беляев А.Е.
+
+Группа: ИВМ-22
+
+== 1. Постановка задачи
+
+В процессе выполнения лабораторной работы необходимо выполнить следующие задачи:
+
+. Упаковать frontend, backend и БД из прошлогодней курсовой работы в Docker-контейнеры (3шт)
+. Развернуть контейнеры (frontend, backend и БД) с помощью docker-compose
+
+
+== 2. Ход выполнения задачи
+
+=== 2.1 Упаковака frontend, backend и БД из прошлогодней курсовой работы в Docker-контейнеры (3шт)
+
+Для упрощения развёртывания серверной и клиентской частей приложения целесообразно создать изображения Docker, содержащее их. Для этого необходимо просто вызвать команды для сборки и упаковки:
+
+.Команды сборки и упаковки frontend
+----
+sudo docker build -f docker/Dockerfile.vue -t my-work .
+----
+
+.Команда сборки, упаковки и создания изображения backend с пропуском тестов
+----
+sudo ./mvnw -Dmaven.test.skip=true package
+sudo docker build -f src/main/docker/Dockerfile.jvm -t quarkus/coursework-jvm .
+----
+
+В итоге будут сформированы изображения, пригодные для запуска контейнеров на любом физическом сервере. Для этого необходимо создать файлы docker-compose.
+
+.Листинг настроечного файла docker-compose.yml для frontend
+[source,xml]
+----
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    frontend:
+        image: my-work
+        ports:
+            - '80:80'           
+            - "3000:3000"
+        volumes:
+            - './nginx/conf:/etc/nginx/conf.d'
+            - './nginx/certs:/etc/nginx/certs'
+            - './nginx/vhost:/etc/nginx/vhost.d'
+        networks:
+            - network
+----
+
+.Листинг настроечного файла docker-compose.yml для backend
+[source,xml]
+----
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    backend_1:
+        image: quarkus/coursework-jvm
+        ports:
+            - "8081:8081"
+        networks:
+            - network
+----
+
+.Листинг настроечного файла docker-compose.yml для БД
+[source,xml]
+----
+version: '3.7'
+
+networks:
+    network:
+        driver: bridge
+        name: net_1
+
+services:
+    database:
+        image: postgres:12
+        ports:
+            - "5432:5432"
+        networks:
+            - network
+        environment:
+            POSTGRES_USER: coursework
+            POSTGRES_PASSWORD: coursework
+            POSTGRES_DB: coursework
+----
+
+=== 2.2 Развёртывание контейнеров (frontend, backend и БД) с помощью docker-compose
+
+Теперь можно запустить frontend, backend и БД в докере с помощью следующей команды:
+
+----
+sudo docker-compose up
+----
+
+Важно помнить, что запуск зависимых контейнеров должен прходить строго в следующем порядке:
+
+. БД
+. backend
+. frontend
+
+== 3. Результаты выполнения
+
+В результате выполнения задания было выполнено:
+
+. Упаковака frontend, backend и БД из прошлогодней курсовой работы в Docker-контейнеры (3шт)
+. Развёртывание контейнеров (frontend, backend и БД) с помощью docker-compose
+
+== 4. Вывод
+
+В результате выполнения лабораторной работы получены навыки по работе с Docker и docker-compose.
